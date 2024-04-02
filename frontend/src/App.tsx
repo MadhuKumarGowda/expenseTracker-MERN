@@ -7,15 +7,15 @@ import NotFoundPgae from "./pages/NotFoundPgae";
 import Header from "./components/ui/Header";
 
 function App() {
-  const authUser = false;
+  const authUser = true;
   return (
     <>
       {authUser && <Header />}
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/sign" element={<SignUpPage />}></Route>
-        <Route path="/transaction/:id" element={<TransactionPage />}></Route>
+        <Route path="/signup" element={<SignUpPage />}></Route>
+        <Route path="/Transaction/:id" element={<TransactionPage />}></Route>
         <Route path="*" element={<NotFoundPgae />}></Route>
       </Routes>
     </>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import RadioButton from "../components/ui/RadioButton";
 import InputField from "../components/ui/InputField";
