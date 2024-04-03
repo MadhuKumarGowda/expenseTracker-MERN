@@ -54,25 +54,25 @@ const userResolver = {
         throw new Error(err.message || " Internal Server Error");
       }
     },
-    logout: async(_,_, context)=>{
+    logout: async (_, args, context) => {
       try {
-       await context.logout();
-       req.session.destroy((err)=>{
-        if(err) throw
-       });
-       res.clearCookie("connect.sid");
-       return { message: "Logged out successfully"};
+        await context.logout();
+        context.req.session.destroy((err) => {
+          if (err) throw new Error(err.message || "Internal Server Error");
+        });
+        context.res.clearCookie("connect.sid");
+        return { message: "Logged out successfully" };
       } catch (error) {
         console.log("Error in Logout : ", err);
         throw new Error(err.message || " Internal Server Error");
       }
-      }    
+    },
   },
   Query: {
-    authUser: async(_,_, context)=>{
+    authUser: async (_, args, context) => {
       try {
-       const user = await context.getUser()
-       return user;
+        const user = await context.getUser();
+        return user;
       } catch (err) {
         console.log("Error in get user : ", err);
         throw new Error(err.message || " Internal Server Error");
@@ -85,7 +85,7 @@ const userResolver = {
       } catch (err) {
         console.log("Error in get user query : ", err);
         throw new Error(err.message || " Internal Server Error");
-      }      
+      }
     },
   },
 };
