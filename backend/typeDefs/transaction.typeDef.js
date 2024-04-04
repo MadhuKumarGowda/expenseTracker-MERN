@@ -4,7 +4,7 @@ type Transaction {
     _id: ID!
     userId: ID!
     description: String!
-    payementType: String!
+    paymentType: String!
     category: String!
     amount: Float!
     location: String
@@ -24,7 +24,7 @@ type Mutation{
 
 input CreateTransactionInput {
     description: String!
-    payementType: String!
+    paymentType: String!
     category: String!
     amount: Float!
     location: String
@@ -34,7 +34,7 @@ input CreateTransactionInput {
 input updateTransactionInput {
     transactionId: ID!
     description: String
-    payementType: String
+    paymentType: String
     category: String
     amount: Float
     location: String

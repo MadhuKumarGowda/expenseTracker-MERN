@@ -13,8 +13,11 @@ const categoryColorMap = {
   // Add more categories and corresponding color classes as needed
 };
 
-const Card = ({ cardType }) => {
-  const cardClass = categoryColorMap[cardType];
+const Card = ({ transaction }: any) => {
+  let { description, paymentType, location, amount, category, date } =
+    transaction;
+  //description = description[0]?.toUppercase() + description.slice(1);
+  const cardClass = categoryColorMap[category];
 
   return (
     <div className={`rounded-md p-4 bg-gradient-to-br ${cardClass}`}>
@@ -30,22 +33,22 @@ const Card = ({ cardType }) => {
         </div>
         <p className="text-white flex items-center gap-1">
           <BsCardText />
-          Description: Salary
+          Description: {description}
         </p>
         <p className="text-white flex items-center gap-1">
           <MdOutlinePayments />
-          Payment Type: Cash
+          Payment Type: {paymentType}
         </p>
         <p className="text-white flex items-center gap-1">
           <FaSackDollar />
-          Amount: $150
+          Amount: {amount}
         </p>
         <p className="text-white flex items-center gap-1">
           <FaLocationDot />
-          Location: New York
+          Location: {location}
         </p>
         <div className="flex justify-between items-center">
-          <p className="text-xs text-black font-bold">21 Sep, 2001</p>
+          <p className="text-xs text-black font-bold">{date}</p>
           <img
             src={"https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
             className="h-8 w-8 border rounded-full"

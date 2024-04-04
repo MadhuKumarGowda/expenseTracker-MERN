@@ -47,7 +47,6 @@ const userResolver = {
           username,
           password,
         });
-
         await context.login(user);
         return user;
       } catch (err) {
